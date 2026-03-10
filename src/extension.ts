@@ -57,7 +57,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('npmDepManager.refreshCache', async () => {
+    vscode.commands.registerCommand('trawl.refreshCache', async () => {
       clearCache();
       await refreshAllDiagnostics();
       vscode.window.showInformationMessage('Trawl: Cache cleared and dependencies refreshed.');
