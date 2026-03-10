@@ -3,10 +3,10 @@
   "displayName": "Trawl - NPM Dependency Manager",
   "description": "Zero-click outdated dependency warnings and version autocomplete for package.json",
   "version": "0.1.0",
-  "publisher": "VoidWorks",
+  "publisher": "JensAstrup",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VoidWorksIO/trawl"
+    "url": "https://github.com/JensAstrup/trawl"
   },
     "scripts": {
     "vscode:prepublish": "npm run package",
@@ -41,11 +41,11 @@
   "contributes": {
     "commands": [
       {
-        "command": "npmDepManager.checkOutdated",
+        "command": "trawl.checkOutdated",
         "title": "NPM: Check Outdated Dependencies"
       },
       {
-        "command": "npmDepManager.refreshCache",
+        "command": "trawl.refreshCache",
         "title": "NPM: Refresh Dependency Cache"
       }
     ],

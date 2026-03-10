@@ -40,7 +40,7 @@ The key differentiator versus existing tools is the **zero-interaction warning m
 ## Project Structure
 
 ```
-npm-dep-manager/
+trawl/
 ├── .vscode/
 │   ├── launch.json          # F5 debug configuration for Extension Development Host
 │   └── tasks.json           # Build task wired to esbuild watch mode
@@ -154,7 +154,7 @@ npm install -g @vscode/vsce
 vsce package
 ```
 
-This runs the `vscode:prepublish` script (which type-checks and creates a minified production build), then packages everything into a file like `npm-dep-manager-0.1.0.vsix`.
+This runs the `vscode:prepublish` script (which type-checks and creates a minified production build), then packages everything into a file like `trawl-0.1.0.vsix`.
 
 The `.vscodeignore` file controls what goes into the package. Source files, `node_modules`, and config files are excluded — only `dist/extension.js`, `package.json`, and `README.md` are included, keeping the package small (~17 KB).
 
@@ -172,10 +172,10 @@ The `.vscodeignore` file controls what goes into the package. Source files, `nod
 
 ```bash
 # VS Code
-code --install-extension npm-dep-manager-0.1.0.vsix
+code --install-extension trawl-0.1.0.vsix
 
 # Cursor
-cursor --install-extension npm-dep-manager-0.1.0.vsix
+cursor --install-extension trawl-0.1.0.vsix
 ```
 
 ### 3. Bump the version
@@ -238,7 +238,7 @@ npx ovsx create-namespace <publisher-name> -p <token>
 vsce package
 
 # Publish the .vsix
-npx ovsx publish npm-dep-manager-0.1.0.vsix -p <token>
+npx ovsx publish trawl-0.1.0.vsix -p <token>
 ```
 
 ### Option C: GitHub Releases (private / manual distribution)

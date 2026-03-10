@@ -25,7 +25,7 @@ export function getAnalysisCache() {
  * Initialize the diagnostics system. Called from extension activate().
  */
 export function initDiagnostics(context: vscode.ExtensionContext): vscode.DiagnosticCollection {
-  diagnosticCollection = vscode.languages.createDiagnosticCollection('npm-dep-manager');
+  diagnosticCollection = vscode.languages.createDiagnosticCollection('trawl');
   context.subscriptions.push(diagnosticCollection);
 
   // Analyze all currently open package.json files
@@ -177,7 +177,7 @@ async function analyzeDocument(document: vscode.TextDocument): Promise<void> {
     const message = formatDiagnosticMessage(dep, analysis, suggested);
 
     const diagnostic = new vscode.Diagnostic(range, message, severity);
-    diagnostic.source = 'npm-dep-manager';
+    diagnostic.source = 'trawl';
     diagnostic.code = {
       value: analysis.updateType,
       target: vscode.Uri.parse(info.npmUrl),

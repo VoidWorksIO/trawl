@@ -21,7 +21,7 @@ export class VersionQuickFixProvider implements vscode.CodeActionProvider {
     const actions: vscode.CodeAction[] = [];
 
     for (const diagnostic of context.diagnostics) {
-      if (diagnostic.source !== 'npm-dep-manager') continue;
+      if (diagnostic.source !== 'trawl') continue;
 
       const depName = (diagnostic as any)._depName as string | undefined;
       const suggestedVersion = (diagnostic as any)._suggestedVersion as string | undefined;

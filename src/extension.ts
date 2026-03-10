@@ -50,35 +50,35 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // Register commands
   context.subscriptions.push(
-    vscode.commands.registerCommand('npmDepManager.checkOutdated', async () => {
+    vscode.commands.registerCommand('trawl.checkOutdated', async () => {
       await refreshAllDiagnostics();
-      vscode.window.showInformationMessage('NPM Dependency Manager: Dependencies checked.');
+      vscode.window.showInformationMessage('Trawl: Dependencies checked.');
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('npmDepManager.refreshCache', async () => {
+    vscode.commands.registerCommand('trawl.refreshCache', async () => {
       clearCache();
       await refreshAllDiagnostics();
-      vscode.window.showInformationMessage('NPM Dependency Manager: Cache cleared and dependencies refreshed.');
+      vscode.window.showInformationMessage('Trawl: Cache cleared and dependencies refreshed.');
     })
   );
 
   // Watch for configuration changes
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((event) => {
-      if (event.affectsConfiguration('npmDepManager')) {
+      if (event.affectsConfiguration('trawl')) {
         applyConfig();
         refreshAllDiagnostics();
       }
     })
   );
 
-  console.log('NPM Dependency Manager activated');
+  console.log('Trawl activated');
 }
 
 function applyConfig(): void {
-  const config = vscode.workspace.getConfiguration('npmDepManager');
+  const config = vscode.workspace.getConfiguration('trawl');
   const ttl = config.get<number>('cacheTTLMinutes', 30);
   setCacheTTL(ttl);
 }

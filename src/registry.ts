@@ -131,7 +131,7 @@ function fetchFromRegistry(packageName: string): Promise<NpmPackageInfo> {
       {
         headers: {
           Accept: 'application/json',
-          'User-Agent': 'npm-dep-manager-vscode/0.1.0',
+          'User-Agent': 'trawl-vscode/0.1.0',
         },
         timeout: 10000,
       },
