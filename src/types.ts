@@ -2,6 +2,9 @@
  * Types used across the extension.
  */
 
+import type * as vscode from 'vscode'
+
+
 export interface DependencyInfo {
   /** The package name */
   name: string;
@@ -32,7 +35,7 @@ export const DEPENDENCY_GROUPS: DependencyGroup[] = [
   'devDependencies',
   'peerDependencies',
   'optionalDependencies',
-];
+]
 
 export interface NpmPackageInfo {
   /** The package name */
@@ -70,3 +73,25 @@ export interface VersionAnalysis {
   /** Last publish date of the latest version */
   latestPublishDate?: string;
 }
+
+export interface TrawlDiagnostic extends vscode.Diagnostic {
+  _depName: string
+  _suggestedVersion: string | undefined
+  _latestVersion: string
+  _maxSatisfying: string | undefined
+}
+
+const HttpStatusCode = {
+  OK: 200,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  METHOD_NOT_ALLOWED: 405,
+  CONFLICT: 409,
+  UNPROCESSABLE_ENTITY: 422,
+  INTERNAL_SERVER_ERROR: 500,
+}
+
+
+export { HttpStatusCode }

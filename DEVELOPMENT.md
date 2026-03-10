@@ -287,16 +287,16 @@ git push origin v0.1.0
 
 ## Configuration
 
-All settings are under the `npmDepManager` namespace in VS Code settings.
+All settings are under the `trawl` namespace in VS Code settings.
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `npmDepManager.cacheTTLMinutes` | `30` | How long to cache npm registry responses before background refresh |
-| `npmDepManager.enableDiagnostics` | `true` | Toggle automatic outdated dependency warnings |
-| `npmDepManager.enableVersionAutocomplete` | `true` | Toggle version autocomplete inside dependency values |
-| `npmDepManager.enableHover` | `true` | Toggle hover documentation on dependencies |
-| `npmDepManager.concurrency` | `6` | Max concurrent requests to the npm registry |
-| `npmDepManager.ignoredPackages` | `[]` | Package names to skip when checking for updates |
+| `trawl.cacheTTLMinutes` | `30` | How long to cache npm registry responses before background refresh |
+| `trawl.enableDiagnostics` | `true` | Toggle automatic outdated dependency warnings |
+| `trawl.enableVersionAutocomplete` | `true` | Toggle version autocomplete inside dependency values |
+| `trawl.enableHover` | `true` | Toggle hover documentation on dependencies |
+| `trawl.concurrency` | `6` | Max concurrent requests to the npm registry |
+| `trawl.ignoredPackages` | `[]` | Package names to skip when checking for updates |
 
 ---
 

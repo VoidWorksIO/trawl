@@ -16,7 +16,7 @@
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && node esbuild.js --production",
-    "lint": "eslint src --ext ts"
+    "lint": "eslint src"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -50,34 +50,34 @@
       }
     ],
     "configuration": {
-      "title": "NPM Dependency Manager",
+      "title": "Trawl",
       "properties": {
-        "npmDepManager.cacheTTLMinutes": {
+        "trawl.cacheTTLMinutes": {
           "type": "number",
           "default": 30,
           "description": "How long (in minutes) to cache npm registry responses before refreshing."
         },
-        "npmDepManager.enableDiagnostics": {
+        "trawl.enableDiagnostics": {
           "type": "boolean",
           "default": true,
           "description": "Enable automatic outdated dependency diagnostics."
         },
-        "npmDepManager.enableVersionAutocomplete": {
+        "trawl.enableVersionAutocomplete": {
           "type": "boolean",
           "default": true,
           "description": "Enable version string autocomplete from npm registry."
         },
-        "npmDepManager.enableHover": {
+        "trawl.enableHover": {
           "type": "boolean",
           "default": true,
           "description": "Enable hover information for dependencies."
         },
-        "npmDepManager.concurrency": {
+        "trawl.concurrency": {
           "type": "number",
           "default": 6,
           "description": "Number of concurrent npm registry requests."
         },
-        "npmDepManager.ignoredPackages": {
+        "trawl.ignoredPackages": {
           "type": "array",
           "default": [],
           "items": {
@@ -89,13 +89,25 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
+    "@eslint/js": "10.0.1",
+    "@types/node": "20.11.0",
     "@types/semver": "7.7.1",
-    "@types/vscode": "^1.85.0",
-    "esbuild": "^0.20.0",
-    "typescript": "^5.3.0"
+    "@types/vscode": "1.85.0",
+    "esbuild": "0.20.0",
+    "eslint": "10.0.2",
+    "eslint-config-yenz": "10.1.1",
+    "typescript": "5.8.3"
   },
   "dependencies": {
-    "semver": "^7.6.0"
+    "semver": "7.6.0"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "8.56.1",
+    "@typescript-eslint/parser": "8.56.1",
+    "@typescript-eslint/utils": "8.56.1",
+    "@typescript-eslint/types": "8.56.1",
+    "@typescript-eslint/typescript-estree": "8.56.1",
+    "@typescript-eslint/scope-manager": "8.56.1",
+    "@typescript-eslint/visitor-keys": "8.56.1"
   }
 }
