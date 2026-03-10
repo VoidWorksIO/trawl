@@ -6,6 +6,7 @@
 import * as https from 'https';
 import * as http from 'http';
 import { NpmPackageInfo, CachedPackageInfo } from './types';
+import { version } from '../package.json';
 
 const REGISTRY_URL = 'https://registry.npmjs.org';
 
@@ -131,7 +132,7 @@ function fetchFromRegistry(packageName: string): Promise<NpmPackageInfo> {
       {
         headers: {
           Accept: 'application/json',
-          'User-Agent': 'trawl-vscode/0.1.0',
+          'User-Agent': `trawl-vscode/${version}`,
         },
         timeout: 10000,
       },

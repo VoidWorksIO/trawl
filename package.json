@@ -2,7 +2,7 @@
   "name": "trawl",
   "displayName": "Trawl - NPM Dependency Manager",
   "description": "Zero-click outdated dependency warnings and version autocomplete for package.json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "JensAstrup",
   "repository": {
     "type": "git",
