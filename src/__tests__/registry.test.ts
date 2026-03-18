@@ -102,18 +102,20 @@ describe('getPackageInfo', () => {
     const expiredOffset = (DEFAULT_TTL_MINUTES + 1) * 60 * MS_PER_SECOND
     Date.now = jest.fn(() => originalDateNow() + expiredOffset)
 
-    const mockRequest = makeMockRequest({ networkError: new Error('ECONNREFUSED') })
-    ;(https.get as jest.Mock).mockImplementation(
-      (_url: string, _options: unknown, _callback: unknown) => {
-        return mockRequest
-      }
-    )
+    try {
+      const mockRequest = makeMockRequest({ networkError: new Error('ECONNREFUSED') })
+      ;(https.get as jest.Mock).mockImplementation(
+        (_url: string, _options: unknown, _callback: unknown) => {
+          return mockRequest
+        }
+      )
 
-    const result = await getPackageInfo('test-pkg')
-    expect(result).not.toBeNull()
-    expect(result?.name).toBe('test-pkg')
-
-    Date.now = originalDateNow
+      const result = await getPackageInfo('test-pkg')
+      expect(result).not.toBeNull()
+      expect(result?.name).toBe('test-pkg')
+    } finally {
+      Date.now = originalDateNow
+    }
   })
 
   it('does not issue duplicate HTTP requests for inflight packages', async () => {

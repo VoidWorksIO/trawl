@@ -7,6 +7,10 @@ import { TrawlDiagnostic } from '../types'
 
 jest.mock('../parser')
 
+interface WorkspaceEditWithReplacements {
+  replacements: Array<{ uri: vscode.Uri; range: vscode.Range; newText: string }>
+}
+
 const VERSION_START_CHAR = 15
 const VERSION_END_CHAR = 23
 const MOCK_RANGE_END_CHAR = 30
@@ -106,8 +110,10 @@ describe('VersionQuickFixProvider.provideCodeActions', () => {
     const actions = provider.provideCodeActions(document, mockRange, context, mockToken)
     const updateAction = actions[0]
 
-    const edit = updateAction.edit as unknown as { replacements: Array<{ newText: string }> }
+    const edit = updateAction.edit as unknown as WorkspaceEditWithReplacements
     expect(edit.replacements).toHaveLength(1)
+    expect(edit.replacements[0].uri).toEqual(document.uri)
+    expect(edit.replacements[0].range).toEqual(diagnostic.range)
     expect(edit.replacements[0].newText).toBe('^5.0.0')
   })
 
@@ -120,7 +126,10 @@ describe('VersionQuickFixProvider.provideCodeActions', () => {
     const pinAction = actions[1]
 
     expect(pinAction.title).toContain('5.0.0')
-    const edit = pinAction.edit as unknown as { replacements: Array<{ newText: string }> }
+    const edit = pinAction.edit as unknown as WorkspaceEditWithReplacements
+    expect(edit.replacements).toHaveLength(1)
+    expect(edit.replacements[0].uri).toEqual(document.uri)
+    expect(edit.replacements[0].range).toEqual(diagnostic.range)
     expect(edit.replacements[0].newText).toBe('5.0.0')
   })
 

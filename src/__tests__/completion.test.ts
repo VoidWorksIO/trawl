@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 
-import { VersionCompletionProvider } from '../completion'
+import { VersionCompletionProvider, MAX_VERSIONS } from '../completion'
 import * as parser from '../parser'
 import * as registry from '../registry'
 import { DependencyInfo, NpmPackageInfo } from '../types'
@@ -10,7 +10,6 @@ jest.mock('../parser')
 jest.mock('../registry')
 
 const MOCK_POSITION_CHAR = 17
-const MAX_VERSIONS = 30
 const VERSION_START_CHAR = 15
 const VERSION_END_CHAR = 23
 
