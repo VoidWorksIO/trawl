@@ -10,6 +10,7 @@ import * as vscode from 'vscode'
 import { parseDependencies, isPackageJson, getDependencyAtPosition } from './parser'
 import { getPackageInfo } from './registry'
 
+export const MAX_VERSIONS = 30
 
 export class VersionCompletionProvider implements vscode.CompletionItemProvider {
   async provideCompletionItems(
@@ -104,7 +105,6 @@ export class VersionCompletionProvider implements vscode.CompletionItemProvider 
     }
 
     // Add individual versions (limit to prevent overwhelming)
-    const MAX_VERSIONS = 30
     const versionItems = sortedVersions.slice(0, MAX_VERSIONS).map((version, index) => {
       const publishDate = packageInfo.time[version]
       const item = new vscode.CompletionItem(`^${version}`, vscode.CompletionItemKind.Value)

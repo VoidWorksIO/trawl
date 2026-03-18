@@ -105,12 +105,12 @@ export async function prefetchPackages(
   let nextIndex = 0
 
   async function worker(): Promise<void> {
-    while (nextIndex < packageNames.length) {
-      const index = nextIndex++
-      const name = packageNames[index]
-      const info = await getPackageInfo(name)
-      if (info) results.set(name, info)
-    }
+    const index = nextIndex++
+    if (index >= packageNames.length) return
+    const name = packageNames[index]
+    const info = await getPackageInfo(name)
+    if (info) results.set(name, info)
+    await worker()
   }
 
   const workerCount = Math.min(concurrency, packageNames.length)
