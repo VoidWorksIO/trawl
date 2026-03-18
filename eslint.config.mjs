@@ -29,7 +29,7 @@ const eslintConfig = [
       }],
       '@typescript-eslint/only-throw-error': 'off',
       // VS Code extensions legitimately use console for output channel logging
-      'no-console': ['warn', { allow: ['error', 'warn', 'log'] }],
+      'no-console': 'off',
       'import/order': [
         'error',
         {
