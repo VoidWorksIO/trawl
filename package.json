@@ -17,7 +17,8 @@
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && node esbuild.js --production",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "publish": "vsce package && vsce publish"
   },
   "engines": {
     "vscode": "^1.85.0"
